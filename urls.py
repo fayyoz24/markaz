@@ -16,6 +16,7 @@ from main.views import (
     GradeViewSet,
     ExpenseViewSet,
     ReportViewSet,
+    ReportView
 )
 
 router = DefaultRouter()
@@ -32,5 +33,6 @@ urlpatterns = [
     path('admin/',          admin.site.urls),
     path('auth/login/',     LoginView.as_view(),        name='login'),
     path('auth/refresh/',   TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/reports/summary/', ReportView.as_view(), name='report_summary'),
     path('',                include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
